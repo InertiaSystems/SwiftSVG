@@ -134,6 +134,28 @@ public struct SVGParserSupportedElements {
                 returnElement.supportedAttributes.add(returnElement.transformAttributes)
                 return returnElement
             },
+            //<text x="529.1" y="567.3" fill="black" textLength="1.2" lengthAdjust="spacingAndGlyphs" font-size="2.5px" font-family="sans-serif" text-align="center" //text-anchor="center">6
+            SVGText.elementName: {
+                let returnElement = SVGText()
+                returnElement.supportedAttributes = [
+                    "x": unown(returnElement, SVGText.x),
+                    "y": unown(returnElement, SVGText.y),
+                    "fill": unown(returnElement, SVGText.fill),
+                    "textLength": unown(returnElement, SVGText.textLength),
+                    "lengthAdjust": unown(returnElement, SVGText.lengthAdjust),
+                    "fontSize": unown(returnElement, SVGText.fontSize),
+                    "fontFamily": unown(returnElement, SVGText.fontFamily),
+                    "textAlign": unown(returnElement, SVGText.textAlign),
+                    "text": unown(returnElement, SVGText.text),
+                    "textAnchor": unown(returnElement, SVGText.textAnchor)
+                ]
+                returnElement.supportedAttributes.add(returnElement.identityAttributes)
+                returnElement.supportedAttributes.add(returnElement.fillAttributes)
+                returnElement.supportedAttributes.add(returnElement.strokeAttributes)
+                returnElement.supportedAttributes.add(returnElement.styleAttributes)
+                returnElement.supportedAttributes.add(returnElement.transformAttributes)
+                return returnElement
+            },
             SVGPath.elementName: {
                 let returnElement = SVGPath()
                 returnElement.supportedAttributes = [

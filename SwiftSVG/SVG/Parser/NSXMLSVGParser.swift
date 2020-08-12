@@ -73,6 +73,9 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
     /// The `SVGLayer` that will contain all of the SVG's sublayers
     open var containerLayer = SVGLayer()
     
+    var foundCharacters:String = "";
+
+    
     /// :nodoc:
     let asyncCountQueue = DispatchQueue(label: "com.straussmade.swiftsvg.asyncCountQueue.serial", qos: .userInteractive)
     
@@ -151,14 +154,27 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
                 asyncElement.asyncParseManager = self
             }
         }
-        
+       
+
         for (attributeName, attributeClosure) in svgElement.supportedAttributes {
+             if ((elementName.elementsEqual("text")) == true &&  (attributeName.elementsEqual("text")) == true ){
+                 attributeClosure(self.foundCharacters)
+            
+            }
             if let attributeValue = attributeDict[attributeName] {
                 attributeClosure(attributeValue)
             }
         }
         
         self.elementStack.push(svgElement)
+    }
+    
+    
+    
+    
+    
+    public func parser(_ parser: XMLParser, foundCharacters string: String) {
+        self.foundCharacters = string.trimmingCharacters(in: .whitespacesAndNewlines);
     }
     
     /**
@@ -180,6 +196,15 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
         
         guard let lastElement = self.elementStack.pop() else {
             return
+        }
+        
+        
+        for (attributeName, attributeClosure) in lastElement.supportedAttributes {
+             if ((elementName.elementsEqual("text")) == true &&  (attributeName.elementsEqual("text")) == true ){
+                 attributeClosure(self.foundCharacters)
+            
+            }
+
         }
         
         if let rootItem = lastElement as? SVGRootElement {

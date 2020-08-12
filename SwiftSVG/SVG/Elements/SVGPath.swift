@@ -132,12 +132,17 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
         #endif
         
     }
-    
+
     /// :nodoc:
     internal func didProcessElement(in container: SVGContainerElement?) {
         guard let container = container else {
             return
         }
+        
+       
+
+        //container.containerLayer.addSublayer(textlayer)
+        
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }
