@@ -3,7 +3,7 @@
 Pod::Spec.new do |s| 
 
   s.name         = "SwiftSVG"
-  s.version      = "2.3.2"
+  s.version      = "2.3.3"
   s.summary      = "A simple, performant, single pass SVG parser"
   s.description  = "A simple, performant, single pass SVG parser. Optimized for extension and developer joy."
   s.homepage     = "https://github.com/mchoe/SwiftSVG"
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = "10.11"
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
-  s.source       = { :git => "https://github.com/mchoe/SwiftSVG.git", :tag => "v#{s.version}" }
+  s.source       = { :git => "https://github.com/InertiaSystems/SwiftSVG.git", :tag => "v#{s.version}" }
   s.source_files  = "SwiftSVG", "SwiftSVG/**/*.{h,swift}"
   s.resources = "SwiftSVG/SVG/Helpers/cssColorNames.json"
   s.swift_version = "5.0"
