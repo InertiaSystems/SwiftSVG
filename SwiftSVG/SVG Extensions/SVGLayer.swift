@@ -39,6 +39,9 @@
  */
 public protocol SVGLayerType {
     var boundingBox: CGRect { get }
+    var type:String { get set }
+    var dbId:String { get set }
+
 }
 
 public extension SVGLayerType where Self: CALayer {
@@ -78,7 +81,13 @@ public extension SVGLayerType where Self: CALayer {
 open class SVGLayer: CAShapeLayer, SVGLayerType {
     
     /// The minimum CGRect that fits all subpaths
-    public var boundingBox = CGRect.null    
+    public var boundingBox = CGRect.null
+    /// Layer Type
+    public var type:String = ""
+    /// Layer dbId
+    public var dbId:String = ""
+    
+    
 }
 
 public extension SVGLayer {
@@ -90,6 +99,8 @@ public extension SVGLayer {
         let tmp = NSKeyedArchiver.archivedData(withRootObject: self)
         let copiedLayer = NSKeyedUnarchiver.unarchiveObject(with: tmp) as? SVGLayer
         copiedLayer?.boundingBox = self.boundingBox
+        copiedLayer?.type = self.type
+        copiedLayer?.dbId = self.dbId
         return copiedLayer
     }
 }

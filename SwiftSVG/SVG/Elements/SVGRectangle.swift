@@ -49,7 +49,7 @@ final class SVGRectangle: SVGShapeElement {
     internal var rectangleRect = CGRect()
     
     /// :nodoc:
-    internal var svgLayer = CAShapeLayer()
+    internal var svgLayer = SVGLayer()
     
     /// :nodoc:
     internal var supportedAttributes: [String : (String) -> ()] = [:]
@@ -155,6 +155,7 @@ final class SVGRectangle: SVGShapeElement {
             rectanglePath = UIBezierPath(rect: self.rectangleRect)
         }
         self.svgLayer.path = rectanglePath.cgPath
+        self.svgLayer.type = SVGRectangle.elementName
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }

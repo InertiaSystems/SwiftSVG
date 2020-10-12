@@ -128,7 +128,7 @@ final class SVGText: SVGShapeElement {
     }
     
     /// :nodoc:
-    internal var svgLayer = CAShapeLayer()
+    internal var svgLayer = SVGLayer()
     
     /// :nodoc:
     internal var supportedAttributes: [String : (String) -> ()] = [:]
@@ -186,8 +186,9 @@ final class SVGText: SVGShapeElement {
                path.move(to: CGPoint(x: x, y: y))
                path.append(UIBezierPath(cgPath: letters))
                path.close()
-        self.svgLayer.path = path.cgPath
-        self.svgLayer.position = CGPoint(x: x, y: y)
+               self.svgLayer.path = path.cgPath
+               self.svgLayer.position = CGPoint(x: x, y: y)
+               self.svgLayer.type = SVGText.elementName
                container.containerLayer.addSublayer( self.svgLayer)
 
     }

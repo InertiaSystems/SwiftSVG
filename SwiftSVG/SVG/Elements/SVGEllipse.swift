@@ -58,7 +58,7 @@ final class SVGEllipse: SVGShapeElement {
     internal var yRadius: CGFloat = 0
     
     /// :nodoc:
-    internal var svgLayer = CAShapeLayer()
+    internal var svgLayer = SVGLayer()
     
     /// :nodoc:
     internal var supportedAttributes: [String : (String) -> ()] = [:]
@@ -113,6 +113,7 @@ final class SVGEllipse: SVGShapeElement {
         let ellipseRect = CGRect(x: self.ellipseCenter.x - self.xRadius, y: self.ellipseCenter.y - self.yRadius, width: 2 * self.xRadius, height: 2 * self.yRadius)
         let circlePath = UIBezierPath(ovalIn: ellipseRect)
         self.svgLayer.path = circlePath.cgPath
+        self.svgLayer.type = SVGEllipse.elementName
         container.containerLayer.addSublayer(self.svgLayer)
     }
     

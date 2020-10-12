@@ -47,7 +47,7 @@ struct SVGPolygon: SVGShapeElement {
     internal var supportedAttributes: [String : (String) -> ()] = [:]
     
     /// :nodoc:
-    internal var svgLayer = CAShapeLayer()
+    internal var svgLayer = SVGLayer()
     
     /**
      Function that parses a coordinate string and creates a polygon path
@@ -70,6 +70,7 @@ struct SVGPolygon: SVGShapeElement {
         guard let container = container else {
             return
         }
+        self.svgLayer.type = SVGPolygon.elementName
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }

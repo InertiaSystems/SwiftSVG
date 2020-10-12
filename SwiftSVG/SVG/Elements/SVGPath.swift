@@ -59,7 +59,9 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
     internal var supportedAttributes = [String : (String) -> ()]()
     
     /// :nodoc:
-    internal var svgLayer = CAShapeLayer()
+    internal var svgLayer = SVGLayer()
+    
+    internal var dbId:String? = "";
     
     /// :nodoc:
     internal init() { }
@@ -132,6 +134,13 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
         #endif
         
     }
+    
+    internal func dbId(id: String) {
+        guard let dbId = String?(id) else {
+            return
+        }
+        self.dbId = dbId
+    }
 
     /// :nodoc:
     internal func didProcessElement(in container: SVGContainerElement?) {
@@ -142,7 +151,10 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
        
 
         //container.containerLayer.addSublayer(textlayer)
-        
+        self.svgLayer.type = SVGPath.elementName
+        if let id = self.dbId {
+            self.svgLayer.dbId  = id
+        }
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }

@@ -38,7 +38,7 @@
  Concrete implementation that creates a `CAShapeLayer` from a `<polyline>` element and its attributes
  */
 
-struct SVGPolyline: SVGShapeElement {
+class SVGPolyline: SVGShapeElement {
     
     /// :nodoc:
     internal static let elementName = "polyline"
@@ -47,7 +47,9 @@ struct SVGPolyline: SVGShapeElement {
     internal var supportedAttributes: [String : (String) -> ()] = [:]
     
     /// :nodoc:
-    internal var svgLayer = CAShapeLayer()
+    internal var svgLayer = SVGLayer()
+    
+    internal var dbId:String? = "";
     
     /**
      Parses a coordinate string and creates a new polyline based on them
@@ -64,10 +66,22 @@ struct SVGPolyline: SVGShapeElement {
         self.svgLayer.path = polylinePath.cgPath
     }
     
+    internal  func dbId(id: String) {
+        guard let dbId = String?(id) else {
+            return
+        }
+        self.dbId = dbId
+    }
+
+    
     /// :nodoc:
     internal func didProcessElement(in container: SVGContainerElement?) {
         guard let container = container else {
             return
+        }
+        self.svgLayer.type = SVGPolyline.elementName
+        if let id = self.dbId {
+            self.svgLayer.dbId  = id
         }
         container.containerLayer.addSublayer(self.svgLayer)
     }

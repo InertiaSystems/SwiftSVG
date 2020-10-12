@@ -55,7 +55,7 @@ final class SVGCircle: SVGShapeElement {
     internal var circleRadius: CGFloat = 0
     
     /// :nodoc:
-    internal var svgLayer = CAShapeLayer()
+    internal var svgLayer = SVGLayer()
     
     /// :nodoc:
     internal var supportedAttributes: [String : (String) -> ()] = [:]
@@ -104,6 +104,7 @@ final class SVGCircle: SVGShapeElement {
         let circlePath = NSBezierPath(ovalIn: circleRect)
         #endif
         self.svgLayer.path = circlePath.cgPath
+        self.svgLayer.type = SVGCircle.elementName
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }

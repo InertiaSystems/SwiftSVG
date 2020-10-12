@@ -43,7 +43,7 @@ public protocol SVGShapeElement: SVGElement, Fillable, Strokable, Transformable,
     /**
      The `CAShapeLayer` that can draw the path data.
      */
-    var svgLayer: CAShapeLayer { get set }
+    var svgLayer: SVGLayer { get set }
 }
 
 extension SVGShapeElement {
