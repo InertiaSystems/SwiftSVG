@@ -70,7 +70,7 @@ struct SVGPolygon: SVGShapeElement {
         guard let container = container else {
             return
         }
-        self.svgLayer.type = SVGPolygon.elementName
+        self.svgLayer.icdObjType = SVGPolygon.elementName
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }

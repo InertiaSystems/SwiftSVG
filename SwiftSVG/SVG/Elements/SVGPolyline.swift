@@ -49,7 +49,7 @@ class SVGPolyline: SVGShapeElement {
     /// :nodoc:
     internal var svgLayer = SVGLayer()
     
-    internal var dbId:String? = "";
+    internal var icdDbId:String? = "";
     
     /**
      Parses a coordinate string and creates a new polyline based on them
@@ -66,11 +66,11 @@ class SVGPolyline: SVGShapeElement {
         self.svgLayer.path = polylinePath.cgPath
     }
     
-    internal  func dbId(id: String) {
+    internal  func icdDbId(id: String) {
         guard let dbId = String?(id) else {
             return
         }
-        self.dbId = dbId
+        self.icdDbId = dbId
     }
 
     
@@ -79,9 +79,9 @@ class SVGPolyline: SVGShapeElement {
         guard let container = container else {
             return
         }
-        self.svgLayer.type = SVGPolyline.elementName
-        if let id = self.dbId {
-            self.svgLayer.dbId  = id
+        self.svgLayer.icdObjType = SVGPolyline.elementName
+        if let id = self.icdDbId {
+            self.svgLayer.icdDbId  = id
         }
         container.containerLayer.addSublayer(self.svgLayer)
     }

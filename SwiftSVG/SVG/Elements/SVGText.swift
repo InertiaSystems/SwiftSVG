@@ -188,7 +188,7 @@ final class SVGText: SVGShapeElement {
                path.close()
                self.svgLayer.path = path.cgPath
                self.svgLayer.position = CGPoint(x: x, y: y)
-               self.svgLayer.type = SVGText.elementName
+               self.svgLayer.icdObjType = SVGText.elementName
                container.containerLayer.addSublayer( self.svgLayer)
 
     }

@@ -61,7 +61,10 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
     /// :nodoc:
     internal var svgLayer = SVGLayer()
     
-    internal var dbId:String? = "";
+    internal var icdDbId:String? = "";
+    
+    internal var icdObjType:String? = "";
+
     
     /// :nodoc:
     internal init() { }
@@ -135,11 +138,18 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
         
     }
     
-    internal func dbId(id: String) {
+    internal func icdDbId(id: String) {
         guard let dbId = String?(id) else {
             return
         }
-        self.dbId = dbId
+        self.icdDbId = dbId
+    }
+    
+    internal func icdObjType(typ: String) {
+        guard let type = String?(typ) else {
+            return
+        }
+        self.icdObjType = type
     }
 
     /// :nodoc:
@@ -151,9 +161,12 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
        
 
         //container.containerLayer.addSublayer(textlayer)
-        self.svgLayer.type = SVGPath.elementName
-        if let id = self.dbId {
-            self.svgLayer.dbId  = id
+        
+        if let type = self.icdObjType {
+            self.svgLayer.icdObjType = type
+        }
+        if let id = self.icdDbId {
+            self.svgLayer.icdDbId  = id
         }
         container.containerLayer.addSublayer(self.svgLayer)
     }

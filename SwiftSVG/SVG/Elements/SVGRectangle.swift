@@ -155,7 +155,7 @@ final class SVGRectangle: SVGShapeElement {
             rectanglePath = UIBezierPath(rect: self.rectangleRect)
         }
         self.svgLayer.path = rectanglePath.cgPath
-        self.svgLayer.type = SVGRectangle.elementName
+        self.svgLayer.icdObjType = SVGRectangle.elementName
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }

@@ -111,7 +111,7 @@ final class SVGLine: SVGShapeElement {
         linePath.move(to: self.start)
         linePath.addLine(to: self.end)
         self.svgLayer.path = linePath.cgPath
-        self.svgLayer.type = SVGLine.elementName
+        self.svgLayer.icdObjType = SVGLine.elementName
 
         container.containerLayer.addSublayer(self.svgLayer)
     }

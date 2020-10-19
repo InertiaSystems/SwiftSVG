@@ -104,7 +104,7 @@ final class SVGCircle: SVGShapeElement {
         let circlePath = NSBezierPath(ovalIn: circleRect)
         #endif
         self.svgLayer.path = circlePath.cgPath
-        self.svgLayer.type = SVGCircle.elementName
+        self.svgLayer.icdObjType = SVGCircle.elementName
         container.containerLayer.addSublayer(self.svgLayer)
     }
 }
