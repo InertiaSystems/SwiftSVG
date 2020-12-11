@@ -162,7 +162,8 @@ public struct SVGParserSupportedElements {
                     "d": unown(returnElement, SVGPath.parseD),
                     "clip-rule": unown(returnElement, SVGPath.clipRule),
                     "icd_db_id": unown(returnElement, SVGPath.icdDbId),
-                    "icd_obj_type" : unown(returnElement, SVGPath.icdObjType)
+                    "icd_obj_type" : unown(returnElement, SVGPath.icdObjType),
+                    "interactive" : unown(returnElement, SVGPath.icdInteractive)
                 ]
                 returnElement.supportedAttributes.add(returnElement.identityAttributes)
                 returnElement.supportedAttributes.add(returnElement.fillAttributes)
@@ -187,7 +188,8 @@ public struct SVGParserSupportedElements {
                 var returnElement = SVGPolyline()
                 returnElement.supportedAttributes = [
                     "points": unown(returnElement, SVGPolyline.points),
-                    "data-db-id": unown(returnElement, SVGPolyline.icdDbId)
+                    "data-db-id": unown(returnElement, SVGPolyline.icdDbId),
+                    "interactive" : unown(returnElement, SVGPolyline.icdInteractive)
                 ]
                 returnElement.supportedAttributes.add(returnElement.identityAttributes)
                 returnElement.supportedAttributes.add(returnElement.fillAttributes)

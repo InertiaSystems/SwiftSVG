@@ -41,6 +41,7 @@ public protocol SVGLayerType {
     var boundingBox: CGRect { get }
     var icdDbId:String { get set }
     var icdObjType:String { get set }
+    var icdInteractive:Bool { get set }
 
 }
 
@@ -86,6 +87,8 @@ open class SVGLayer: CAShapeLayer, SVGLayerType {
     public var icdObjType:String = ""
     /// Layer dbId
     public var icdDbId:String = ""
+    /// Layer isInteractive
+    public var icdInteractive:Bool = false
     
     
 }
@@ -101,6 +104,7 @@ public extension SVGLayer {
         copiedLayer?.boundingBox = self.boundingBox
         copiedLayer?.icdObjType = self.icdObjType
         copiedLayer?.icdDbId = self.icdDbId
+        copiedLayer?.icdInteractive = self.icdInteractive
         return copiedLayer
     }
 }

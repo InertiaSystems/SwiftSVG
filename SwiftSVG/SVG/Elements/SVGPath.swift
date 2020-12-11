@@ -61,9 +61,11 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
     /// :nodoc:
     internal var svgLayer = SVGLayer()
     
-    internal var icdDbId:String? = "";
+    internal var icdDbId:String? = ""
     
-    internal var icdObjType:String? = "";
+    internal var icdObjType:String? = ""
+
+    internal var icdInteractive:Bool? = false
 
     
     /// :nodoc:
@@ -152,6 +154,13 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
         self.icdObjType = type
     }
 
+    internal func icdInteractive(interactive: String) {
+        guard let isInteractive = Bool?((interactive as NSString).boolValue) else {
+            return
+        }
+        self.icdInteractive = isInteractive
+    }
+
     /// :nodoc:
     internal func didProcessElement(in container: SVGContainerElement?) {
         guard let container = container else {
@@ -167,6 +176,10 @@ final class SVGPath: SVGShapeElement, ParsesAsynchronously, DelaysApplyingAttrib
         }
         if let id = self.icdDbId {
             self.svgLayer.icdDbId  = id
+        }
+        
+        if let ntrcv = self.icdInteractive {
+            self.svgLayer.icdInteractive  = ntrcv
         }
         container.containerLayer.addSublayer(self.svgLayer)
     }

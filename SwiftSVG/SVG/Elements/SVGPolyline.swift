@@ -51,6 +51,9 @@ class SVGPolyline: SVGShapeElement {
     
     internal var icdDbId:String? = "";
     
+    internal var icdInteractive:Bool? = false
+
+    
     /**
      Parses a coordinate string and creates a new polyline based on them
      */
@@ -64,6 +67,13 @@ class SVGPolyline: SVGShapeElement {
             }
         }
         self.svgLayer.path = polylinePath.cgPath
+    }
+    
+    internal  func icdInteractive(interactive: String) {
+        guard let interactiveTmp = Bool?((interactive as NSString).boolValue) else {
+            return
+        }
+        self.icdInteractive = interactiveTmp
     }
     
     internal  func icdDbId(id: String) {
