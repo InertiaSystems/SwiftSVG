@@ -215,6 +215,18 @@ public struct SVGParserSupportedElements {
                 returnElement.supportedAttributes.add(returnElement.transformAttributes)
                 return returnElement
             },
+            SVGScript.elementName: {
+                let returnElement = SVGScript()
+                returnElement.supportedAttributes = [
+                    "json": unown(returnElement, SVGScript.json),
+                ]
+                returnElement.supportedAttributes.add(returnElement.identityAttributes)
+                returnElement.supportedAttributes.add(returnElement.fillAttributes)
+                returnElement.supportedAttributes.add(returnElement.strokeAttributes)
+                returnElement.supportedAttributes.add(returnElement.styleAttributes)
+                returnElement.supportedAttributes.add(returnElement.transformAttributes)
+                return returnElement
+            },
             SVGRootElement.elementName: {
                 var returnElement = SVGRootElement()
                 returnElement.supportedAttributes = [

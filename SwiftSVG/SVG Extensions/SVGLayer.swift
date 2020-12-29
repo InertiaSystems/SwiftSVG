@@ -87,6 +87,9 @@ open class SVGLayer: CAShapeLayer, SVGLayerType {
     public var icdObjType:String = ""
     /// Layer dbId
     public var icdDbId:String = ""
+    
+    /// Layer data
+    public var data:String = ""
     /// Layer isInteractive
     public var icdInteractive:Bool = false
     

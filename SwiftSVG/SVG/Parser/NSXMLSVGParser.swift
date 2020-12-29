@@ -74,6 +74,9 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
     open var containerLayer = SVGLayer()
     
     var foundCharacters:String = "";
+    
+    var jsonScript:String = "";
+
 
     
     /// :nodoc:
@@ -161,6 +164,11 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
                  attributeClosure(self.foundCharacters)
             
             }
+            
+            if ((elementName.elementsEqual("script")) == true &&  (attributeName.elementsEqual("json")) == true ){
+                attributeClosure(self.jsonScript)
+           
+           }
             if let attributeValue = attributeDict[attributeName] {
                 attributeClosure(attributeValue)
             }
@@ -175,6 +183,13 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
     
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
         self.foundCharacters = string.trimmingCharacters(in: .whitespacesAndNewlines);
+        let pos = string.lastIndex(of: "]")
+        let pos2 = string.starts(with: "var entities =")
+        if(pos != nil || pos2 ){
+            print(pos)
+            self.jsonScript += string;
+        }
+        
     }
     
     /**
@@ -204,7 +219,10 @@ open class NSXMLSVGParser: XMLParser, XMLParserDelegate {
                  attributeClosure(self.foundCharacters)
             
             }
-
+            if ((elementName.elementsEqual("script")) == true &&  (attributeName.elementsEqual("json")) == true ){
+                attributeClosure(self.jsonScript)
+           
+           }
         }
         
         if let rootItem = lastElement as? SVGRootElement {
