@@ -1,12 +1,12 @@
 import Foundation
 
-// MARK: - WelcomeValue
+// MARK: - IcdItem
 public struct IcdItem : IIcdItem {
-    let dataDBSurrogateKey, dataDBIcdModelFileID, dataDBElementID: Int?
-    let dataDBName, dataDBSheetids, dataDBExternalID: String?
-    let dataDBAttrs: DataDBAttrs?
-    let dataDBID: Int?
-    let dataDBCategory: String?
+    public let dataDBSurrogateKey, dataDBIcdModelFileID, dataDBElementID: Int?
+    public let dataDBName, dataDBSheetids, dataDBExternalID: String?
+    public let dataDBAttrs: DataDBAttrs?
+    public let dataDBID: Int?
+    public let dataDBCategory: String?
     public let id : String?
     
     
@@ -127,92 +127,92 @@ extension DecodedArray: Collection {
 }
 
 // MARK: - DataDBAttrs
-struct DataDBAttrs : Decodable{
-    let id: String?
-    let identityData: [String: [String]]?
-    let phasing: Phasing?
-    let constraints: [String: [String]]?
-    let category: Category?
-    let structural: Structural?
-    let dimensions: [String: [String]]?
-    let fireProtection: FireProtection?
-    let categoryID: CategoryID?
-    let viewableIn: ViewableIn?
-    let parent: Parent?
-    let name: Name?
-    let instanceof: Instanceof?
-    let internalref: Internalref?
-    let graphics, other: [String: [String]]?
-    let extents: Extents?
-    let text: Text?
-    let construction: Construction?
-    let materialsAndFinishes: MaterialsAndFinishes?
-    let data: DataClass?
-    let electricalLoads: ElectricalLoads?
-    let mechanical: Mechanical?
-    let electricalCircuiting: ElectricalCircuiting?
-    let electricalLighting: ElectricalLighting?
-    let child: Child?
+public struct DataDBAttrs : Decodable{
+    public let id: String?
+    public let identityData: [String: [String]]?
+    public let phasing: Phasing?
+    public let constraints: [String: [String]]?
+    public let category: Category?
+    public let structural: Structural?
+    public let dimensions: [String: [String]]?
+    public let fireProtection: FireProtection?
+    public let categoryID: CategoryID?
+    public let viewableIn: ViewableIn?
+    public let parent: Parent?
+    public let name: Name?
+    public let instanceof: Instanceof?
+    public let internalref: Internalref?
+    public let graphics, other: [String: [String]]?
+    public let extents: Extents?
+    public let text: Text?
+    public let construction: Construction?
+    public let materialsAndFinishes: MaterialsAndFinishes?
+    public let data: DataClass?
+    public let electricalLoads: ElectricalLoads?
+    public let mechanical: Mechanical?
+    public let electricalCircuiting: ElectricalCircuiting?
+    public let electricalLighting: ElectricalLighting?
+    public let child: Child?
     
 
 }
 
 // MARK: - Category
-struct Category : Decodable{
+public struct Category : Decodable{
     let category: [String]?
 }
 
 
 
 // MARK: - CategoryID
-struct CategoryID : Decodable{
+public struct CategoryID : Decodable{
     let categoryID: [String]?
 }
 
 // MARK: - Child
-struct Child : Decodable{
+public struct Child : Decodable{
     let child: [String]?
 }
 
 // MARK: - Construction
-struct Construction : Decodable {
+public struct Construction : Decodable {
     let revisionID, frameType, revisionDescription, frameDetailHead: [String]?
     let frameDetailJamb, frameDetailSill, showValence: [String]?
 }
 
 // MARK: - DataClass
-struct DataClass : Decodable{
+public struct DataClass : Decodable{
     let wallDepth, frameDepth: [String]?
 }
 
 // MARK: - ElectricalCircuiting
-struct ElectricalCircuiting : Decodable{
+public struct ElectricalCircuiting : Decodable{
     let electricalData: [String]?
 }
 
 // MARK: - ElectricalLighting
-struct ElectricalLighting : Decodable{
+public struct ElectricalLighting : Decodable{
     let calculateCoefficientOfUtilization, coefficientOfUtilization, switchID: [String]?
 }
 
 // MARK: - ElectricalLoads
-struct ElectricalLoads : Decodable{
+public struct ElectricalLoads : Decodable{
     let panel, circuitNumber, emergency: [String]?
 }
 
 // MARK: - Extents
-struct Extents : Decodable{
+public struct Extents : Decodable{
     let cropRegionVisible, scopeBox, depthClipping, cropView: [String]?
     let viewRange, associatedLevel, annotationCrop: [String]?
 }
 
 // MARK: - FireProtection
-struct FireProtection : Decodable{
+public struct FireProtection : Decodable{
     let fireRatingNBBJ: [FireRatingNBBJ]?
 }
 
-enum FireRatingNBBJ : Decodable{
-    init(from decoder: Decoder) throws {
+public enum FireRatingNBBJ : Decodable{
+    public init(from decoder: Decoder) throws {
         try self.init(from: decoder)
     }
     
@@ -225,17 +225,17 @@ enum FireRatingNBBJ : Decodable{
 }
 
 // MARK: - Instanceof
-struct Instanceof : Decodable{
+public struct Instanceof : Decodable{
     let instanceofObjid: [String]?
 }
 
 // MARK: - Internalref
-struct Internalref : Decodable{
+public struct Internalref : Decodable{
     let level, group, hostFamily, subFamily: [String]?
 }
 
 // MARK: - MaterialsAndFinishes
-struct MaterialsAndFinishes : Decodable{
+public struct MaterialsAndFinishes : Decodable{
     let materialsAndFinishesFrameMaterial: [FrameMaterial]?
     let panelMaterial: [PanelMaterial]?
     let panelMaterialFinish, frameMaterialFinish: [FrameMaterialFinish]?
@@ -244,8 +244,8 @@ struct MaterialsAndFinishes : Decodable{
     let panelGlazingMaterial: [FrameMaterialFinish]?
 }
 
-enum Finish : Decodable{
-    init(from decoder: Decoder) throws {
+public enum Finish : Decodable{
+    public init(from decoder: Decoder) throws {
         try self.init(from: decoder)
     }
     
@@ -272,8 +272,8 @@ enum FrameMaterial : Decodable{
     case hmPnt
 }
 
-enum PanelMaterial : Decodable{
-    init(from decoder: Decoder) throws {
+public enum PanelMaterial : Decodable{
+    public init(from decoder: Decoder) throws {
         try self.init(from: decoder)
     }
     
@@ -283,38 +283,38 @@ enum PanelMaterial : Decodable{
 }
 
 // MARK: - Mechanical
-struct Mechanical : Decodable{
+public struct Mechanical : Decodable{
     let systemAbbreviation, systemType, systemClassification, systemName: [String]?
 }
 
 // MARK: - Name
-struct Name : Decodable{
+public struct Name : Decodable{
     let name: [String]?
 }
 
 // MARK: - Parent
-struct Parent : Decodable{
+public struct Parent : Decodable{
     let parent: [String]?
 }
 
 // MARK: - Phasing
-struct Phasing : Decodable{
+public struct Phasing : Decodable{
     let phaseCreated: [Phase]?
     let phaseDemolished: [PhaseDemolished]?
     let phaseFilter: [String]?
     let phase: [Phase]?
 }
 
-enum Phase : Decodable{
-    init(from decoder: Decoder) throws {
+public enum Phase : Decodable{
+    public init(from decoder: Decoder) throws {
         try self.init(from: decoder)
     }
     
     case newConstruction
 }
 
-enum PhaseDemolished : Decodable{
-    init(from decoder: Decoder) throws {
+public enum PhaseDemolished : Decodable{
+    public init(from decoder: Decoder) throws {
         try self.init(from: decoder)
     }
     
@@ -322,13 +322,13 @@ enum PhaseDemolished : Decodable{
 }
 
 // MARK: - Structural
-struct Structural : Decodable{
+public struct Structural : Decodable{
     let structuralUsage: [StructuralUsage]?
     let structural, enableAnalyticalModel, rebarCover: [String]?
 }
 
-enum StructuralUsage : Decodable {
-    init(from decoder: Decoder) throws {
+public enum StructuralUsage : Decodable {
+    public init(from decoder: Decoder) throws {
         try self.init(from: decoder)
     }
     
@@ -336,17 +336,17 @@ enum StructuralUsage : Decodable {
 }
 
 // MARK: - Text
-struct Text : Decodable{
+public struct Text : Decodable{
     let glassType: [String]?
 }
 
 // MARK: - ViewableIn
-struct ViewableIn : Decodable{
+public struct ViewableIn : Decodable{
     let viewableIn: [ViewableInElement]?
 }
 
-enum ViewableInElement : Decodable{
-    init(from decoder: Decoder) throws {
+public enum ViewableInElement : Decodable{
+    public init(from decoder: Decoder) throws {
         try self.init(from: decoder)
     }
 
